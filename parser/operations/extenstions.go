@@ -15,10 +15,6 @@ func (p *parser) parseExtensionComment(operation *oas.OperationObject, comment s
 	// /path x-lambda {"function":"my-lambda"}
 	re := regexp.MustCompile(`([\w\.\/\-{}]+)[^\[]([-.\w]+)[\s]+(\{.*?\})*`)
 	matches := re.FindStringSubmatch(sourceString)
-	fmt.Println(matches[1])
-	fmt.Println(matches[2])
-	fmt.Println(matches[3])
-	fmt.Println(len(matches))
 	if len(matches) != 4 {
 		return fmt.Errorf("Can not parse extention comment \"%s\", skipped", comment)
 	}
@@ -46,9 +42,5 @@ func (p *parser) parseExtensionComment(operation *oas.OperationObject, comment s
 
 	p.OpenAPI.Paths[matches[1]].UnderlyingExtensions[matches[2]] = raw
 
-	bbbb, err := json.MarshalIndent(operation, "", "  ")
-
-	fmt.Println("sdfsadf")
-	fmt.Println(string(bbbb))
 	return nil
 }

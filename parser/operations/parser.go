@@ -29,7 +29,6 @@ func NewParser(utils model.Utils, api *OpenAPIObject, schemaParser schema.Parser
 }
 
 func (p *parser) Parse(pkgPath, pkgName string, astComments []*ast.Comment) error {
-	fmt.Println(pkgPath, pkgName)
 	operation := &OperationObject{Responses: map[string]*ResponseObject{}}
 	if !strings.HasPrefix(pkgPath, p.ModulePath) || (p.HandlerPath != "" && !strings.HasPrefix(pkgPath, p.HandlerPath)) {
 		return nil
