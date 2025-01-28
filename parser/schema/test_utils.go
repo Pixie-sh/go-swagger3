@@ -2,8 +2,8 @@ package schema
 
 import (
 	"github.com/iancoleman/orderedmap"
-	oas "github.com/parvez3019/go-swagger3/openApi3Schema"
-	"github.com/parvez3019/go-swagger3/parser/schema/mocks"
+	oas "github.com/pixie-sh/go-swagger3/openApi3Schema"
+	"github.com/pixie-sh/go-swagger3/parser/schema/mocks"
 )
 
 func GetSchemaObject() *oas.SchemaObject {

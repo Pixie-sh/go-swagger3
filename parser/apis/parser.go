@@ -1,10 +1,10 @@
 package apis
 
 import (
-	oas "github.com/parvez3019/go-swagger3/openApi3Schema"
-	"github.com/parvez3019/go-swagger3/parser/model"
-	"github.com/parvez3019/go-swagger3/parser/operations"
-	"github.com/parvez3019/go-swagger3/parser/schema"
+	oas "github.com/pixie-sh/go-swagger3/openApi3Schema"
+	"github.com/pixie-sh/go-swagger3/parser/model"
+	"github.com/pixie-sh/go-swagger3/parser/operations"
+	"github.com/pixie-sh/go-swagger3/parser/schema"
 	log "github.com/sirupsen/logrus"
 )
 

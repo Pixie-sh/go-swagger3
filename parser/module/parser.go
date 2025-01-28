@@ -1,7 +1,7 @@
 package module
 
 import (
-	"github.com/parvez3019/go-swagger3/parser/model"
+	"github.com/pixie-sh/go-swagger3/parser/model"
 	log "github.com/sirupsen/logrus"
 	"os"
 	"path/filepath"

@@ -2,7 +2,7 @@ package apis
 
 import (
 	"fmt"
-	oas "github.com/parvez3019/go-swagger3/openApi3Schema"
+	oas "github.com/pixie-sh/go-swagger3/openApi3Schema"
 	"go/ast"
 	"strings"
 )

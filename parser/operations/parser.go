@@ -2,9 +2,9 @@ package operations
 
 import (
 	"fmt"
-	. "github.com/parvez3019/go-swagger3/openApi3Schema"
-	"github.com/parvez3019/go-swagger3/parser/model"
-	"github.com/parvez3019/go-swagger3/parser/schema"
+	. "github.com/pixie-sh/go-swagger3/openApi3Schema"
+	"github.com/pixie-sh/go-swagger3/parser/model"
+	"github.com/pixie-sh/go-swagger3/parser/schema"
 	"go/ast"
 	"strings"
 )

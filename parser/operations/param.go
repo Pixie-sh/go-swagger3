@@ -6,8 +6,8 @@ import (
 	"strings"
 
 	"github.com/iancoleman/orderedmap"
-	oas "github.com/parvez3019/go-swagger3/openApi3Schema"
-	"github.com/parvez3019/go-swagger3/parser/utils"
+	oas "github.com/pixie-sh/go-swagger3/openApi3Schema"
+	"github.com/pixie-sh/go-swagger3/parser/utils"
 )
 
 func (p *parser) parseParamComment(pkgPath, pkgName string, operation *oas.OperationObject, comment string) error {

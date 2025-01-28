@@ -3,7 +3,7 @@ package operations
 import (
 	"encoding/json"
 	"fmt"
-	oas "github.com/parvez3019/go-swagger3/openApi3Schema"
+	oas "github.com/pixie-sh/go-swagger3/openApi3Schema"
 	"regexp"
 	"strings"
 )
