@@ -30,6 +30,7 @@ func GetRestaurants() {
 // @failure 404 {object} ErrResponse
 // @failure 500 {object} ErrResponse
 // @route assortment/planogram [get]
+// @Extension assortment/planogram x-lambda {"function":"my-lambda"}
 func GetPogs() {}
 
 type GetPogsResponse struct {

@@ -166,6 +166,9 @@
       }
     },
     "assortment/planogram": {
+      "x-lambda": {
+        "function": "my-lambda"
+      },
       "get": {
         "responses": {
           "200": {

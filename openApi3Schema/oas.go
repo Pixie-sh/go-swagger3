@@ -1,6 +1,9 @@
 package openApi3Schema
 
-import "github.com/iancoleman/orderedmap"
+import (
+	"encoding/json"
+	"github.com/iancoleman/orderedmap"
+)
 
 const (
 	OpenAPIVersion = "3.0.0"
@@ -53,6 +56,8 @@ type LicenseObject struct {
 type PathsObject map[string]*PathItemObject
 
 type PathItemObject struct {
+	UnderlyingExtensions `json:"-"`
+
 	Ref         string           `json:"$ref,omitempty"`
 	Summary     string           `json:"summary,omitempty"`
 	Description string           `json:"description,omitempty"`
@@ -69,6 +74,7 @@ type PathItemObject struct {
 	// Parameters
 }
 
+type UnderlyingExtensions map[string]interface{}
 type OperationObject struct {
 	Responses ResponsesObject `json:"responses"` // Required
 
@@ -78,6 +84,7 @@ type OperationObject struct {
 	Parameters  []ParameterObject  `json:"parameters,omitempty"`
 	RequestBody *RequestBodyObject `json:"requestBody,omitempty"`
 
+	//[any]map[string]interface{} `json:asd`
 	// Tags
 	// ExternalDocs
 	// OperationID
@@ -85,6 +92,60 @@ type OperationObject struct {
 	// Deprecated
 	// Security
 	// Servers
+}
+
+func (o PathItemObject) MarshalJSON() ([]byte, error) {
+	type Alias PathItemObject
+	aux := struct {
+		Alias
+	}{
+		Alias: Alias(o),
+	}
+
+	data, err := json.Marshal(aux.Alias)
+	if err != nil {
+		return nil, err
+	}
+
+	var mapData map[string]interface{}
+	if err := json.Unmarshal(data, &mapData); err != nil {
+		return nil, err
+	}
+
+	for k, v := range o.UnderlyingExtensions {
+		mapData[k] = v
+	}
+
+	return json.Marshal(mapData)
+}
+
+func (o *PathItemObject) UnmarshalJSON(data []byte) error {
+	type Alias PathItemObject
+	aux := &struct {
+		Alias
+	}{
+		Alias: (Alias)(*o),
+	}
+
+	if err := json.Unmarshal(data, &aux.Alias); err != nil {
+		return err
+	}
+
+	var mapData map[string]interface{}
+	if err := json.Unmarshal(data, &mapData); err != nil {
+		return err
+	}
+
+	//TODO delete existing keys not these ones
+	delete(mapData, "responses")
+	delete(mapData, "tags")
+	delete(mapData, "summary")
+	delete(mapData, "description")
+	delete(mapData, "parameters")
+	delete(mapData, "requestBody")
+
+	o.UnderlyingExtensions = mapData
+	return nil
 }
 
 type ParameterObject struct {
